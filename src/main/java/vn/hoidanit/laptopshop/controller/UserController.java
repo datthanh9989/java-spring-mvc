@@ -1,30 +1,31 @@
 package vn.hoidanit.laptopshop.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import vn.hoidanit.laptopshop.service.UserServive;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-// @Controller
-// public class UserController {
 
-//     @RequestMapping("/")
-//     public String getHomepage(){
-//         return "hello from controler";
-//     }
-// }
-@RestController
+@Controller
 public class UserController {
-    private UserServive userServive;
-    
-    public UserController(UserServive userServive) {
-        this.userServive = userServive;
-    }
 
-    @GetMapping("")
+    @RequestMapping("/")
+    
+    
     public String getHomepage(){
-        return this.userServive.handleHello();
+        return "eric.html";
     }
 }
+// @RestController
+// public class UserController {
+//     private UserServive userServive;
+    
+//     public UserController(UserServive userServive) {
+//         this.userServive = userServive;
+//     }
+
+//     @GetMapping("")
+//     public String getHomepage(){
+//         return this.userServive.handleHello();
+//     }
+// }
