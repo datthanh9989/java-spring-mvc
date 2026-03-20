@@ -5,12 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
-import vn.hoidanit.laptopshop.service.UserServive;
+import vn.hoidanit.laptopshop.service.UserService;
 
 
 
@@ -18,24 +19,31 @@ import vn.hoidanit.laptopshop.service.UserServive;
 @Controller
 public class UserController {
     private final UserRepository userRepository;
-    private final UserServive userServive;
+    private final UserService userService;
     
-    public UserController(UserServive userServive, UserRepository userRepository) {
-        this.userServive = userServive;
+    public UserController(UserService userService, UserRepository userRepository) {
+        this.userService = userService;
         this.userRepository = userRepository;
     }
 
     @RequestMapping("/")
     public String getHomePage(Model model){
-        List<User> arrUser = this.userServive.getAllUserByEmail("1@gmail.com");
+        List<User> arrUser = this.userService.getAllUserByEmail("1@gmail.com");
         model.addAttribute("hoidanit", "from controller with model");
         return "hello";
     }
     @RequestMapping("/admin/user")
     public String getUserPage(Model model){
-        List<User> users = this.userServive.getAllUser();
+        List<User> users = this.userService.getAllUser();
         model.addAttribute("user1", users);
         return "admin/user/table-user";
+    }
+    @RequestMapping("/admin/user/{id}")
+    public String getUserDetailPage(Model model, @PathVariable long id){
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
+        model.addAttribute("id", id);
+        return "admin/user/show";
     }
     @RequestMapping("/admin/user/create")
     public String getCreateUserPage(Model model){
@@ -44,20 +52,20 @@ public class UserController {
     }
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit){
-        this.userServive.handleSaveUser(hoidanit);
+        this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
 }
 // @RestController
 // public class UserController {
-//     private UserServive userServive;
+//     private UserService userService;
     
-//     public UserController(UserServive userServive) {
-//         this.userServive = userServive;
+//     public UserController(UserService userService) {
+//         this.userService = userService;
 //     }
 
 //     @GetMapping("")
 //     public String getHomepage(){
-//         return this.userServive.handleHello();
+//         return this.userService.handleHello();
 //     }
 // }

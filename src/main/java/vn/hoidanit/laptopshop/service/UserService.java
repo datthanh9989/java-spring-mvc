@@ -8,10 +8,10 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 
 @Service
-public class UserServive {
+public class UserService {
     private final UserRepository userRepository;
 
-    public UserServive(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -25,5 +25,8 @@ public class UserServive {
         User eric = this.userRepository.save(user);
         System.out.println(eric);
         return eric;
+    }
+    public User getUserById(long id){
+        return this.userRepository.findById(id);
     }
 }
