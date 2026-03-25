@@ -27,33 +27,29 @@
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Users</li>
                                 </ol>
-                                <div class="mt-5">
-                                    <div class="row">
-                                        <div class="col-md-6 col-12 mx-auto">
-                                            <div class="d-flex justify-content-between">
-                                                <h3>Delete the user with id = ${id}</h3>
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mx-auto">
+                                        <h3> User detail with id = ${id}</h3>
+                                        <hr />
+                                        <div class="card" style="width: 60%">
+                                            <div class="card-header">
+                                                User information
                                             </div>
-
-                                            <hr />
-                                            <div class="alert alert-danger">
-                                                Are you sure to delete this user ?
-                                            </div>
-                                            <form:form method="post" action="/admin/user/delete"
-                                                modelAttribute="newUser">
-                                                <div class="mb-3" style="display: none;">
-                                                    <label class="form-label">Id:</label>
-                                                    <form:input value="${id}" type="text" class="form-control"
-                                                        path="id" />
-                                                </div>
-                                                <button class="btn btn-danger"> Confirm</button>
-                                            </form:form>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">ID: ${user.id}</li>
+                                                <li class="list-group-item">Email: ${user.email} </li>
+                                                <li class="list-group-item">Fullname: ${user.fullName} </li>
+                                                <li class="list-group-item">Address: ${user.address}</li>
+                                            </ul>
                                         </div>
+                                        <a href="/admin/user" class="btn btn-success mt-3">Back</a>
                                     </div>
                                 </div>
                             </div>
-                        </main>
-                        <jsp:include page="../layout/footer.jsp" />
                     </div>
+                    </main>
+                    <jsp:include page="../layout/footer.jsp" />
+                </div>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
