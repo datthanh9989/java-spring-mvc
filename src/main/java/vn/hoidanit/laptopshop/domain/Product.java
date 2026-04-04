@@ -17,6 +17,7 @@ public class Product {
     private double price;
     private String image;
     private String detailDesc;
+    private String shortDesc;
     private long quantity;
     private long sold;
     private String factory;
@@ -77,11 +78,20 @@ public class Product {
     public void setTarget(String target) {
         this.target = target;
     }
+    public String getShortDesc() {
+        return shortDesc;
+    }
+
+    public void setShortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
+    }
     @Override
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detailDesc="
                 + detailDesc + ", quantity=" + quantity + ", sold=" + sold + ", factory=" + factory + ", target="
                 + target + "]";
     }
+
+    
     
 }
