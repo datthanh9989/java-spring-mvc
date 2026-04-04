@@ -44,26 +44,22 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <c:forEach var="user" items="${user1}">
-
-                                                    <tr>
-                                                        <th>${product.id}</th>
-                                                        <td>${product.name}</td>
-                                                        <td>${product.price}</td>
-                                                        <td>${product.role.name}</td>
-                                                        <td>
-                                                            <a href="/admin/user/${user.id}"
-                                                                class="btn btn-success">View</a>
-                                                            <a href="/admin/user/update/${user.id}"
-                                                                class="btn btn-warning  mx-2">Update</a>
-                                                            <a href="/admin/user/delete/${user.id}"
-                                                                class="btn btn-danger">Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
-
-                                            </tbody>
+                                            <c:forEach var="product" items="${products}">
+                                                <tr>
+                                                    <th>${product.id}</th>
+                                                    <td>${product.name}</td>
+                                                    <td>${product.price}</td>
+                                                    <td>${product.factory}</td>
+                                                    <td>
+                                                        <a href="/admin/product/${product.id}"
+                                                            class="btn btn-success">View</a>
+                                                        <a href="/admin/product/update/${product.id}"
+                                                            class="btn btn-warning mx-2">Update</a>
+                                                        <a href="/admin/product/delete/${product.id}"
+                                                            class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
                                         </table>
 
                                     </div>
