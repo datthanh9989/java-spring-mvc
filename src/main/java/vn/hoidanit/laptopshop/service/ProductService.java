@@ -26,4 +26,7 @@ public class ProductService {
     public void deleteProduct(long id){
         this.productRepository.deleteById(id);
     }
+    public List<Product> fetchProducts() {
+        return this.productRepository.findAll();
+}
 }
