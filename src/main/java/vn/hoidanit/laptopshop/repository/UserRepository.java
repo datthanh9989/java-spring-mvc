@@ -16,4 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
     List<User> findAll();
     User findById(long id);
     boolean existsByEmail(String emai);
+
+        // Chuẩn của Spring Data JPA
+    User findByEmail(String email);
 }
