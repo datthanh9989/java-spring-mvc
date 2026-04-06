@@ -22,7 +22,7 @@ public class User {
     private long id;
 
     @NotNull
-    @Email(message = "Email ko hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[azA-Z0-9.-]+$")
+    @Email(message = "Email ko hợp lệ")
     private String email;
 
 
